@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nomEntreprise');
             $table->string('typeEntreprise');
+            $table->string('nomReferent')->nullable();
+            $table->string('numeroReferent')->nullable();
+            $table->string('posteReferent')->nullable();
             $table->string('poste');
             $table->string('description');
             $table->string('dateDebut');

@@ -310,7 +310,7 @@ Route::controller(App\Http\Controllers\SickGuard\AuthSickGuardController::class)
  *
  *
  *
- *ROUTES LIEES AUX FONCTIONNALITES  DU SICKGUARD
+ *ROUTES LIÉES AUX FONCTIONNALITÉS  DE GESTION DE PROFIL  SICK-GUARD
  *
  *
  *
@@ -318,14 +318,79 @@ Route::controller(App\Http\Controllers\SickGuard\AuthSickGuardController::class)
  *
  */
 
-Route::controller(App\Http\Controllers\SickGuard\AuthSickGuardController::class)
-    ->name('sickguard.')
-    ->middleware('sickguard')
-    ->prefix('sickguard')
+
+Route::name('sickguard.profil.')
+    ->prefix('sickguard/profil/')
     ->group(function ()
     {
 
+        /**
+         * GESTION DES EXPERIENCES
+         */
+
+        Route::name('experience.')
+            ->prefix('experience')
+            ->controller(\App\Http\Controllers\SickGuard\Profil\SickGuardGestionExperienceController::class)
+            ->group(function () {
+                Route::get('list', 'list')->name('list');
+                Route::post('create', 'create')->name('create');
+                Route::delete('delete', 'delete')->name('delete');
+            });
+
+
+        /**
+         * GESTION DES EXPERIENCES
+         */
+
+        Route::name('qualification.')
+            ->prefix('qualification')
+            ->controller(\App\Http\Controllers\SickGuard\Profil\SickGuardGestionQualificationController::class)
+            ->group(function () {
+                Route::get('list', 'list')->name('list');
+                Route::post('create', 'create')->name('create');
+                Route::delete('delete', 'delete')->name('delete');
+            });
     });
+
+
+
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *ROUTES LIÉES AUX FONCTIONNALITÉS  DU WORKFLOW DU SICK-GUARD
+ *             (DISPONIBILITÉS , SERVICES , MISSIONS)
+ *
+ *
+ *
+ *
+ *
+ */
+
+
+Route::name('sickguard.workflow.')
+    ->prefix('sickguard/workflow')
+    ->middleware('sickguard')
+    ->group(function () {
+
+        /**
+         * GESTION DES DISPONIBILITÉS
+         */
+
+        Route::name('disponibilite.')
+            ->prefix('disponibilite')
+            ->controller(\App\Http\Controllers\SickGuard\Workflow\SickGuardGestionDisponibiliteController::class)
+            ->group(function () {
+                Route::get('list', 'list')->name('list');
+                Route::post('create', 'create')->name('create');
+                Route::delete('delete', 'delete')->name('delete');
+            });
+
+    });
+
 
 
 

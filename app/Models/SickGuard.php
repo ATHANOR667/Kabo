@@ -45,7 +45,9 @@ class SickGuard extends Model
     ];
 
 
-    public function admin(){
+
+    public function admin(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(Admin::class);
     }
     /**
@@ -108,6 +110,21 @@ class SickGuard extends Model
             throw new \Exception('Une erreur est survenue ', 400);
 
         }
+    }
+
+    public function experiences(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Experience::class);
+    }
+
+    public function qualifications(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Qualification::class);
+    }
+
+    public function disponibilites(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Disponibilite::class);
     }
 
 }

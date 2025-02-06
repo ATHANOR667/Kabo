@@ -10,4 +10,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Disponibilite extends Model
 {
     use HasFactory , SoftDeletes;
+
+    protected $fillable = [
+        'date' ,
+        'debut' ,
+        'fin' ,
+        'sick_guard_id'
+    ] ;
+
+    public function sickGuard(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(SickGuard::class);
+    }
+
 }

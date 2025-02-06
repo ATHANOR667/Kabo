@@ -297,7 +297,7 @@ class AuthSickGuardController extends Controller
                 return response()->json(
                     [
                         'status' => 401,
-                        'message' => 'Votre demande d\'inscription  a été refusé',
+                        'message' => 'Votre demande d\'inscription  a été refusée',
                     ],
                     401
                 );

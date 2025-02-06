@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('annee');
             $table->string('mention');
             $table->string('institutionReference');
-            $table->string('fichier');
+            $table->string('fichier')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
